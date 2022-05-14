@@ -41,6 +41,14 @@ class ProductsListFragment: Fragment() {
 
         })
 
+        binding.productsRefresh.setOnRefreshListener {
+
+            Log.i(TAG, "Refreshing products list")
+            productListViewModel.refreshProducts()
+            binding.productsRefresh.isRefreshing = false
+
+        }
+
         return binding.root
     }
 
