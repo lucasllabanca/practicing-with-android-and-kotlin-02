@@ -10,6 +10,19 @@
         android:name="br.com.labanca.androidproject02.product.ProductsListFragment"
         android:label="fragment_products_list"
         tools:layout="@layout/fragment_products_list" >
+        <action
+            android:id="@+id/action_showProductDetail"
+            app:destination="@id/fragmentProductDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentProductDetail"
+        android:name="br.com.labanca.androidproject02.productdetail.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="productCode"
+            app:argType="string" />
     </fragment>
 
 </navigation>

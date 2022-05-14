@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView.VERTICAL
 import br.com.labanca.androidproject02.databinding.FragmentProductsListBinding
@@ -32,7 +33,12 @@ class ProductsListFragment: Fragment() {
 
         //adding click listener to the product item inside the rcvProducts list of the xml id
         binding.rcvProducts.adapter = ProductAdapter(ProductAdapter.ProductClickListener{
+
             Log.i(TAG,"Product selected: ${it.name}")
+
+            this.findNavController()
+                .navigate(ProductsListFragmentDirections.actionShowProductDetail(it.code))
+
         })
 
         return binding.root

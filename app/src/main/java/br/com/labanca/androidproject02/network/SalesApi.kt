@@ -39,8 +39,12 @@ private val retrofit = Retrofit.Builder()
 
 //Methods should be async and non-blocking, then we use Deferred from coroutines
 interface SalesApiService {
+
     @GET("api/products")
     fun getProducts(): Deferred<List<Product>>
+
+    @GET("api/products/{code}")
+    fun getProductByCode(@Path("code") code: String): Deferred<Product>
 
     //client authentication with blocking request using Call
     @POST("oauth/token")
