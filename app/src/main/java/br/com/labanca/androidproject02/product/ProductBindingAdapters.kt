@@ -1,4 +1,4 @@
-package br.com.labanca.androidproject02.Product
+package br.com.labanca.androidproject02.product
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter

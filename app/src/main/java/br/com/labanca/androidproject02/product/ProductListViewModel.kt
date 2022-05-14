@@ -1,7 +1,10 @@
-package br.com.labanca.androidproject02.Product
+package br.com.labanca.androidproject02.product
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.com.labanca.androidproject02.network.Product
 import br.com.labanca.androidproject02.network.SalesApi
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +21,11 @@ class ProductListViewModel: ViewModel() {
     //passing the scope and where I want it to run
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    private val _products = MutableLiveData<List<Product>>()
+
+    val products: LiveData<List<Product>>
+        get() = _products
+
     init {
         getProducts()
     }
@@ -30,6 +38,7 @@ class ProductListViewModel: ViewModel() {
 
             Log.i(TAG, "Loading products")
             val productsList = getProductsDeferred.await()
+            _products.value = productsList
 
             Log.i(TAG, "Number of products ${productsList.size}")
         }

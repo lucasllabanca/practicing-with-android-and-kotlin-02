@@ -1,4 +1,4 @@
-package br.com.labanca.androidproject02.Product
+package br.com.labanca.androidproject02.product
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
