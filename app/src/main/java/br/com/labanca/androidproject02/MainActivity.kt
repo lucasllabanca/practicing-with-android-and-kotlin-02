@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         //keeps track of the main activity life cycle ViewModelProvider(this)
         //then, when an activity occurs, gets the ProductListViewModel
+        //When the activity is recreated, the model is kept apart and do not run again the get
         val viewModel = ViewModelProvider(this).get(ProductListViewModel::class.java)
 
     }
